@@ -7,6 +7,7 @@ class MoviesController < ApplicationController
   end
 
   def show
+    @reviews = Review.where(movie_id: @movie.id).order("created_at DESC")
   end
 
   def new
@@ -15,7 +16,6 @@ class MoviesController < ApplicationController
 
   def edit
   end
-
 
   def create
     @movie = current_user.movies.build(movie_params)
